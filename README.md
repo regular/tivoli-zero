@@ -66,7 +66,7 @@
   o 12  power switch (GND when off) --> BCM 23
 ```
 
-#### J2
+#### J2 (originally connected to tuner board)
   
 ```
   o 1   --> T1 C
