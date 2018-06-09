@@ -18,7 +18,7 @@
    3.3v  17 R o 18  BCM 24
  BCM 10  19 R o 20  GND
   BCM 9  21 R R 22  BCM 25    rfm12b
- BCM 11  23 R x 24  BCM 8     amp power supply  WP 8  out
+ BCM 11  23 R x 24  BCM 8     amp power supply  WP 10  out
     GND  25 R R 26  BCM 7
 
   BCM 0  27 o o 28  BCM 1

@@ -1,8 +1,8 @@
-#!/usr/bin/bash -eux
+#!/usr/bin/bash -eu
 
 # GPIO out
 LED=1
-AMP=8
+AMP=10
 gpio mode $LED out # LED
 gpio mode $AMP out # amp power
 
