@@ -8,16 +8,28 @@ gpio mode $AMP out # amp power
 
 # GPIO in
 ONSWITCH=4
-MODEBIT1=15
-MODEBIT2=16
+MODEBIT1=16
+MODEBIT2=15
 
 gpio mode $ONSWITCH up
 gpio mode $MODEBIT1 up
 gpio mode $MODEBIT2 up
 
-gpio read $ONSWITCH
-gpio read $MODEBIT1
-gpio read $MODEBIT2
+b0=$(gpio read $ONSWITCH)
+b1=$(gpio read $MODEBIT1)
+b2=$(gpio read $MODEBIT2)
 
-gpio write $LED `gpio read $ONSWITCH`
-gpio write $AMP `gpio read $ONSWITCH`
+mode="$b1$b2"
+mode_dec=$(echo "$((2#$mode))")
+echo "binary: $mode"
+echo "dec: $mode_dec"
+
+current=$(mpc status|head -n -1|tail -n1|cut -d\# -f2|cut -d/ -f1)
+echo "curr: $current"
+
+if [ $current -ne $mode_dec ]; then
+  mpc  play $mode_dec
+fi
+
+gpio write $LED $b0
+gpio write $AMP $b0
